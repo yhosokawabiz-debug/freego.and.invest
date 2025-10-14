@@ -68,6 +68,17 @@
         
         .section {
             margin-bottom: 50px;
+            page-break-inside: avoid;
+        }
+        
+        .section-break {
+            height: 100px;
+        }
+        
+        @media print {
+            .section-break {
+                page-break-before: always;
+            }
         }
         
         .section h2 {
@@ -195,17 +206,49 @@
         }
         
         @media print {
+            body {
+                background: white;
+            }
+            
             .page {
-                padding: 45px 55px;
+                padding: 40px 50px;
                 page-break-after: always;
+                page-break-inside: avoid;
             }
             
             .page:last-child {
                 page-break-after: auto;
             }
             
-            body {
-                background: white;
+            .header {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .section h2 {
+                page-break-after: avoid;
+            }
+            
+            table {
+                page-break-inside: avoid;
+            }
+            
+            .highlight-box, .warning-box {
+                page-break-inside: avoid;
+            }
+            
+            ul, ol {
+                page-break-inside: avoid;
+            }
+            
+            /* 各セクションが長い場合の対応 */
+            .content > * {
+                orphans: 3;
+                widows: 3;
             }
         }
         
