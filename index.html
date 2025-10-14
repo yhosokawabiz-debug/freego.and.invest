@@ -30,19 +30,24 @@
         
         .page {
             padding: 70px 60px;
-            margin-bottom: 40px;
+            margin-bottom: 0;
+        }
+        
+        .page.content-page {
+            padding-top: 40px;
         }
         
         .header {
             text-align: center;
             margin-bottom: 60px;
-            padding: 80px 0 40px 0;
+            padding: 0;
             border-bottom: 3px solid #2c5aa0;
             position: relative;
-            min-height: 400px;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
         }
         
         .header h1 {
@@ -63,11 +68,19 @@
         
         .header .date {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
+            bottom: 40px;
+            right: 40px;
             text-align: right;
             font-size: 16px;
             color: #999;
+        }
+        
+        @media print {
+            .header {
+                min-height: 100vh;
+                page-break-after: always;
+                border-bottom: none;
+            }
         }
         
         .section {
@@ -222,17 +235,17 @@
             
             .page {
                 padding: 40px 50px;
-                page-break-after: always;
                 page-break-inside: avoid;
             }
             
-            .page:last-child {
-                page-break-after: auto;
+            .page.content-page {
+                page-break-before: always;
             }
             
             .header {
-                page-break-after: avoid;
-                page-break-inside: avoid;
+                min-height: 100vh;
+                page-break-after: always;
+                border-bottom: none;
             }
             
             .section {
@@ -366,7 +379,9 @@
                     © 2025 Hands-Free Travel Inc.
                 </div>
             </div>
-            
+        </div>
+        
+        <div class="page content-page">
             <div class="section">
                 <h2>「FREEGO」事業の概要</h2>
                 <div class="content">
@@ -869,7 +884,9 @@
                     © 2025 Hands-Free Travel Inc.
                 </div>
             </div>
-            
+        </div>
+        
+        <div class="page content-page">
             <div class="section">
                 <h2>**年度別計画</h2>
                 <div class="content">
