@@ -6,7 +6,7 @@
     <title>FREEGO 事業の概要 | ハンズフリートラベル株式会社</title>
     <style>
         @page {
-            margin: 20mm;
+            margin: 10mm;
         }
 
         * {
@@ -17,19 +17,19 @@
 
         body {
             font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
-            line-height: 1.9;
+            line-height: 1.8;
             color: #333;
             background: #f5f5f5;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             background: white;
         }
 
         .page {
-            padding: 70px 60px;
+            padding: 40px 40px;
             margin-bottom: 0;
             min-height: 100vh;
         }
@@ -49,106 +49,111 @@
         .title-content {
             text-align: center;
             z-index: 10;
-            padding: 0 60px;
+            padding: 0 40px;
         }
 
         .title-page h1 {
-            font-size: 56px;
+            font-size: 64px;
             color: #2c5aa0;
-            margin: 0 0 40px 0;
+            margin: 0 0 50px 0;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
         .title-page .subtitle {
-            font-size: 42px;
+            font-size: 48px;
             color: #666;
             margin: 0;
             font-weight: 500;
-            letter-spacing: 4px;
-        }
+            letter-spacing
 
         .title-page .date-info {
             position: absolute;
             bottom: 60px;
             right: 60px;
             text-align: right;
-            font-size: 18px;
+            font-size: 20px;
             line-height: 2;
             color: #999;
             z-index: 10;
         }
 
         .section {
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             page-break-inside: avoid;
         }
 
         .section h2 {
-            font-size: 30px;
+            font-size: 34px;
             color: #2c5aa0;
-            margin-bottom: 28px;
-            padding-bottom: 14px;
+            margin-bottom: 30px;
+            padding-bottom: 16px;
             border-bottom: 3px solid #e0e0e0;
             font-weight: 600;
         }
 
         .section h3 {
-            font-size: 26px;
+            font-size: 28px;
             color: #333;
-            margin: 30px 0 18px 0;
-            padding-left: 18px;
+            margin: 32px 0 20px 0;
+            padding-left: 20px;
             border-left: 6px solid #2c5aa0;
             font-weight: 600;
+        }
+
+        .section p {
+            font-size: 17px;
+            line-height: 1.9;
         }
 
         .highlight-box {
             background: #f0f7ff;
             border-left: 5px solid #2c5aa0;
-            padding: 28px;
-            margin: 28px 0;
-            font-size: 19px;
-            line-height: 2;
+            padding: 30px;
+            margin: 30px 0;
+            font-size: 18px;
+            line-height: 1.9;
         }
 
         .warning-box {
             background: #fff9e6;
             border-left: 5px solid #ffa500;
-            padding: 28px;
-            margin: 28px 0;
-            font-size: 19px;
-            line-height: 2;
+            padding: 30px;
+            margin: 30px 0;
+            font-size: 18px;
+            line-height: 1.9;
         }
 
         ul {
-            margin: 20px 0;
+            margin: 22px 0;
             padding-left: 40px;
         }
 
         li {
-            margin: 12px 0;
-            line-height: 1.9;
-            font-size: 18px;
+            margin: 14px 0;
+            line-height: 1.8;
+            font-size: 17px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 28px 0;
-            font-size: 18px;
+            margin: 30px 0;
+            font-size: 16px;
         }
 
         th, td {
             border: 1px solid #ddd;
-            padding: 16px;
+            padding: 14px 12px;
             text-align: left;
-            line-height: 1.8;
+            line-height: 1.7;
         }
 
         th {
             background: #2c5aa0;
             color: white;
             font-weight: 600;
+            font-size: 17px;
         }
 
         tr:nth-child(even) {
@@ -191,6 +196,12 @@
 
             .section {
                 page-break-inside: avoid;
+            }
+
+            /* PDF出力時のみタイトルを折り返さない */
+            .title-page h1,
+            .title-page .subtitle {
+                white-space: nowrap;
             }
         }
     </style>
