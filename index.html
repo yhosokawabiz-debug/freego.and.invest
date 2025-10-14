@@ -8,103 +8,79 @@
         @page {
             margin: 20mm;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+
         body {
             font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
             line-height: 1.9;
             color: #333;
             background: #f5f5f5;
+            margin: 0;
+            padding: 0;
         }
-        
+
         .container {
             max-width: 1000px;
             margin: 0 auto;
             background: white;
         }
-        
+
         .page {
             padding: 70px 60px;
             margin-bottom: 0;
         }
-        
-        .page.content-page {
-            padding-top: 40px;
-        }
-        
+
+        /* タイトルページ用の特別なスタイル */
         .header {
-            text-align: center;
-            margin-bottom: 0;
-            padding: 80px 60px 120px 60px;
-            border-bottom: none;
             position: relative;
             min-height: 100vh;
+            padding: 100px 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             background: white;
-            isolation: isolate;
             box-sizing: border-box;
         }
-        
+
+        /* タイトルと副題のコンテナ */
+        .header-content {
+            text-align: center;
+            z-index: 10;
+        }
+
         .header h1 {
             font-size: 56px;
             color: #2c5aa0;
-            margin: 0 0 20px 0;
+            margin: 0 0 40px 0;
             font-weight: 600;
             letter-spacing: 2px;
-            z-index: 10;
         }
-        
+
         .header .subtitle {
             font-size: 42px;
             color: #666;
             margin: 0;
             font-weight: 500;
             letter-spacing: 4px;
-            z-index: 10;
         }
-        
+
+        /* 右下の日付・会社情報 */
         .header .date {
             position: absolute;
-            bottom: 40px;
-            right: 40px;
+            bottom: 60px;
+            right: 60px;
             text-align: right;
             font-size: 18px;
             line-height: 2;
             color: #999;
             z-index: 10;
         }
-        
-        @media print {
-            .header {
-                min-height: 100vh;
-                page-break-after: always;
-                border-bottom: none;
-            }
-        }
-        
+
         .section {
             margin-bottom: 60px;
             page-break-inside: avoid;
         }
-        
-        .section-break {
-            height: 100px;
-        }
-        
-        @media print {
-            .section-break {
-                page-break-before: always;
-            }
-        }
-        
+
         .section h2 {
             font-size: 30px;
             color: #2c5aa0;
@@ -113,7 +89,7 @@
             border-bottom: 3px solid #e0e0e0;
             font-weight: 600;
         }
-        
+
         .section h3 {
             font-size: 26px;
             color: #333;
@@ -122,34 +98,7 @@
             border-left: 6px solid #2c5aa0;
             font-weight: 600;
         }
-        
-        .section h4 {
-            font-size: 22px;
-            color: #555;
-            margin: 24px 0 14px 0;
-            font-weight: 600;
-        }
-        
-        .content {
-            margin-left: 20px;
-            font-size: 19px;
-        }
-        
-        .content p {
-            margin-bottom: 18px;
-            line-height: 2;
-        }
-        
-        ul {
-            margin: 18px 0 18px 45px;
-        }
-        
-        li {
-            margin-bottom: 14px;
-            line-height: 2;
-            font-size: 19px;
-        }
-        
+
         .highlight-box {
             background: #f0f7ff;
             border-left: 5px solid #2c5aa0;
@@ -158,7 +107,7 @@
             font-size: 19px;
             line-height: 2;
         }
-        
+
         .warning-box {
             background: #fff9e6;
             border-left: 5px solid #ffa500;
@@ -167,219 +116,68 @@
             font-size: 19px;
             line-height: 2;
         }
-        
+
+        ul {
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+
+        li {
+            margin: 12px 0;
+            line-height: 1.9;
+            font-size: 18px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 28px 0;
             font-size: 18px;
         }
-        
+
         th, td {
             border: 1px solid #ddd;
             padding: 16px;
             text-align: left;
             line-height: 1.8;
         }
-        
+
         th {
             background: #2c5aa0;
             color: white;
             font-weight: 600;
         }
-        
+
         tr:nth-child(even) {
             background: #f9f9f9;
         }
-        
-        .number {
-            font-weight: 600;
-            color: #2c5aa0;
-        }
-        
-        .formula {
-            background: #f5f5f5;
-            padding: 22px;
-            border-radius: 5px;
-            font-family: 'Courier New', monospace;
-            margin: 24px 0;
-            overflow-x: auto;
-            font-size: 18px;
-            line-height: 1.8;
-        }
-        
-        .indent {
-            margin-left: 35px;
-            font-size: 19px;
-            line-height: 2;
-        }
-        
-        .event-table {
-            width: 100%;
-            margin: 28px 0;
-        }
-        
-        .event-table td {
-            padding: 14px;
-            vertical-align: top;
-            font-size: 18px;
-            line-height: 1.8;
-        }
-        
-        .event-table .event-name {
-            font-weight: 600;
-            width: 30%;
-        }
-        
-        .price-table th, .price-table td {
-            text-align: center;
-        }
-        
+
         @media print {
-            body {
-                background: white;
-            }
-            
-            .page {
-                padding: 40px 50px;
-                page-break-inside: avoid;
-            }
-            
-            .page.content-page {
-                page-break-before: always;
-            }
-            
             .header {
                 min-height: 100vh;
                 page-break-after: always;
                 border-bottom: none;
             }
-            
+
+            .page {
+                page-break-after: always;
+            }
+
             .section {
                 page-break-inside: avoid;
-            }
-            
-            .section h2 {
-                page-break-after: avoid;
-            }
-            
-            table {
-                page-break-inside: avoid;
-            }
-            
-            .highlight-box, .warning-box {
-                page-break-inside: avoid;
-            }
-            
-            ul, ol {
-                page-break-inside: avoid;
-            }
-            
-            /* 各セクションが長い場合の対応 */
-            .content > * {
-                orphans: 3;
-                widows: 3;
-            }
-        }
-        
-        .pdf-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #2c5aa0;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
-            z-index: 1000;
-            border: none;
-            transition: all 0.3s ease;
-        }
-        
-        .pdf-button:hover {
-            background: #1e3a70;
-            box-shadow: 0 6px 16px rgba(44, 90, 160, 0.4);
-            transform: translateY(-2px);
-        }
-        
-        .pdf-button:active {
-            transform: translateY(0);
-        }
-        
-        @media print {
-            .pdf-button {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .page {
-                padding: 30px 20px;
-            }
-            
-            .header {
-                min-height: 300px;
-                padding: 60px 0 30px 0;
-            }
-            
-            .header h1 {
-                font-size: 32px;
-                margin-bottom: 50px;
-            }
-            
-            .header .subtitle {
-                font-size: 24px;
-                letter-spacing: 2px;
-            }
-            
-            .section h2 {
-                font-size: 22px;
-            }
-            
-            .content {
-                font-size: 16px;
-            }
-            
-            table {
-                font-size: 14px;
-            }
-            
-            th, td {
-                padding: 10px 6px;
-            }
-            
-            li {
-                font-size: 16px;
-            }
-            
-            .pdf-button {
-                top: 10px;
-                right: 10px;
-                padding: 12px 20px;
-                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- PDF出力ボタン -->
-    <button class="pdf-button" onclick="downloadPDF()">📄 PDFダウンロード</button>
-    
-    <script>
-        function downloadPDF() {
-            window.print();
-        }
-    </script>
-    
     <div class="container">
-        <!-- 1ページ目：事業概要 -->
+        <!-- 事業戦略編タイトルページ -->
         <div class="page">
             <div class="header">
-                <h1>「FREEGO」事業の概要</h1>
-                <div class="subtitle">事業戦略編</div>
+                <div class="header-content">
+                    <h1>「FREEGO」事業の概要</h1>
+                    <div class="subtitle">事業戦略編</div>
+                </div>
                 <div class="date">
                     2025.10.10.V1<br>
                     Hands-Free Travel 株式会社<br>
@@ -387,504 +185,471 @@
                 </div>
             </div>
         </div>
-        
-        <div class="page content-page">
+
+        <!-- 事業概要ページ -->
+        <div class="page">
             <div class="section">
                 <h2>「FREEGO」事業の概要</h2>
-                <div class="content">
-                    <h3>1. 事業概要</h3>
-                    <p>
-                        「FREEGO」は、ユーザーが旅行を計画してから帰宅するまでのすべてのプロセスを一括で管理できる旅行プラットフォームです。
-                        このサービスは、旅行者のニーズに応じて、最適な旅行プランを提供し、宿泊施設、交通手段、観光地、飲食店などを簡単に予約できる仕組みを提供します。
-                        さらに、全国の観光地や飲食店、宿泊施設などと提携しており、ユーザーはその場で最適なプランを選択し、手軽に予約・決済を完了できます。
-                    </p>
-                    
-                    <h3>2. 主要な事業展開の概要</h3>
-                    <p>
-                        FREEGOは、「旅行計画」「予約・決済」「旅行中のサポート」「旅行後のフォローアップ」という4つの主要フェーズを通じて、顧客に包括的なサービスを提供します。
-                        それぞれのフェーズにおいて、ユーザーに寄り添った機能を展開し、旅行体験を最大化することを目指しています。
-                        また、地域の観光資源や飲食店、宿泊施設と提携し、地域経済の活性化にも貢献していきます。
-                    </p>
-                    <p class="indent">
-                        ・旅行計画機能：AIを活用して、ユーザーの希望に応じた旅行プランを自動生成し、最適な提案を行います。<br>
-                        ・予約・決済機能：一括予約と決済が可能なシステムを構築し、ユーザーの手間を大幅に削減します。<br>
-                        ・旅行中サポート：リアルタイムで旅行に関する情報提供やサポートを行い、快適な旅を実現します。<br>
-                        ・旅行後のフォローアップ：旅行後に思い出を共有できる機能を提供し、次回の旅行に向けた提案も行います。
-                    </p>
-                    
-                    <h3>3. 事業方針</h3>
-                    <p>
-                        FREEGOのビジネスモデルは、旅行者に対する総合的なサポートと、事業者との緊密な連携により収益を確保します。
-                        旅行者がFREEGOを通じて予約した際の手数料収入が主な収益源となり、その他に広告収益やプレミアムプラン、提携事業者からの紹介料なども収益化の手段として展開していきます。
-                        これにより、持続可能で成長性の高いビジネスモデルの構築を目指します。
-                    </p>
-                    <p class="indent">
-                        収益モデル：<br>
-                        ・手数料収入：ユーザーがプラットフォームを通じて予約を行った際、宿泊施設や飲食店、観光施設から手数料を徴収します。<br>
-                        ・広告収入：地域の観光施設や飲食店がFREEGO内に広告を掲載することで、広告収入を得ます。<br>
-                        ・プレミアムプラン：有料会員向けに、特別な割引や優先予約などの特典を提供し、サブスクリプション収益を獲得します。<br>
-                        ・提携事業者からの紹介料：FREEGO経由で予約された旅行者を提携事業者に紹介することで、紹介料を得ます。
-                    </p>
-                </div>
+                
+                <h3>1. 事業概要</h3>
+                <p>「FREEGO」は、ユーザーが旅行を計画してから帰宅するまでのすべてのプロセスを一括で管理できる旅行プラットフォームです。このサービスは、旅行者のニーズに応じて、最適な旅行プランを提供し、宿泊施設、交通手段、観光地、飲食店などを簡単に予約できる仕組みを提供します。さらに、全国の観光地や飲食店、宿泊施設などと提携しており、ユーザーはその場で最適なプランを選択し、手軽に予約・決済を完了できます。</p>
+
+                <h3>2. 主要な事業展開の概要</h3>
+                <p>FREEGOは、「旅行計画」「予約・決済」「旅行中のサポート」「旅行後のフォローアップ」という4つの主要フェーズを通じて、顧客に包括的なサービスを提供します。それぞれのフェーズにおいて、ユーザーに寄り添った機能を展開し、旅行体験を最大化することを目指しています。また、地域の観光資源や飲食店、宿泊施設と提携し、地域経済の活性化にも貢献していきます。</p>
+
+                <ul>
+                    <li>旅行計画機能：AIを活用して、ユーザーの希望に応じた旅行プランを自動生成し、最適な提案を行います。</li>
+                    <li>予約・決済機能：一括予約と決済が可能なシステムを構築し、ユーザーの手間を大幅に削減します。</li>
+                    <li>旅行中サポート：リアルタイムで旅行に関する情報提供やサポートを行い、快適な旅を実現します。</li>
+                    <li>旅行後のフォローアップ：旅行後に思い出を共有できる機能を提供し、次回の旅行に向けた提案も行います。</li>
+                </ul>
             </div>
-            
+        </div>
+
+        <!-- 事業方針ページ -->
+        <div class="page">
             <div class="section">
-                <h2>イベント/在庫</h2>
-                <div class="content">
-                    <p>
-                        FREEGOでは、全国各地で開催される主要イベントと連携し、イベント開催時には特別な旅行プランを提供します。
-                        これにより、イベント参加者に対して宿泊や交通、観光施設の予約をワンストップで提供し、円滑な旅行体験をサポートします。
-                        また、各地域における在庫（宿泊施設、飲食店、観光施設）を確保し、需要に応じた柔軟なサービス提供を実現します。
-                    </p>
-                    
-                    <table class="event-table">
-                        <tr>
-                            <td class="event-name">2025年 大阪・関西万博（EXPO 2025 OSAKA, KANSAI）</td>
-                            <td>開催期間：2025年4月13日～10月13日（184日間）</td>
-                        </tr>
-                        <tr>
-                            <td class="event-name">2026年 札幌冬季オリンピック</td>
-                            <td>開催予定</td>
-                        </tr>
-                        <tr>
-                            <td class="event-name">花火大会</td>
-                            <td>隅田川花火大会、長岡花火、大曲の花火など全国の主要花火大会</td>
-                        </tr>
-                        <tr>
-                            <td class="event-name">音楽フェス</td>
-                            <td>FUJI ROCK FESTIVAL、SUMMER SONIC、ROCK IN JAPANなど</td>
-                        </tr>
-                        <tr>
-                            <td class="event-name">スポーツイベント</td>
-                            <td>プロ野球、Jリーグ、マラソン大会など</td>
-                        </tr>
-                        <tr>
-                            <td class="event-name">地域祭り</td>
-                            <td>祇園祭、ねぶた祭、阿波踊りなど</td>
-                        </tr>
-                    </table>
-                    
-                    <p>
-                        ※その他、全国各地で開催される主要イベントに対応し、旅行プランの提供を行います。<br>
-                        ※イベント開催時には、宿泊施設の確保が困難になることが多いため、FREEGOでは事前に在庫を確保し、ユーザーに提供します。
-                    </p>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2>FREEGO MALL - 在庫量</h2>
-                <div class="content">
-                    <h3>1. 地域別の在庫</h3>
-                    <p>
-                        FREEGO MALLは、全国各地の宿泊施設、観光施設、飲食店などと提携し、豊富な在庫を確保しています。
-                        各地域において、宿泊施設は大規模ホテルからゲストハウスまで幅広く対応し、観光施設や飲食店についても多様な選択肢を提供します。
-                        ユーザーは、予算や目的に応じて最適なプランを選択できます。
-                    </p>
-                    
-                    <table class="price-table">
-                        <thead>
-                            <tr>
-                                <th>地域</th>
-                                <th>宿泊施設（室数）</th>
-                                <th>観光施設（件数）</th>
-                                <th>飲食店（店舗数）</th>
-                                <th>交通手段</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>東京</td>
-                                <td>50,000</td>
-                                <td>1,200</td>
-                                <td>15,000</td>
-                                <td>電車・バス・タクシー</td>
-                            </tr>
-                            <tr>
-                                <td>大阪</td>
-                                <td>30,000</td>
-                                <td>800</td>
-                                <td>10,000</td>
-                                <td>電車・バス・タクシー</td>
-                            </tr>
-                            <tr>
-                                <td>京都</td>
-                                <td>15,000</td>
-                                <td>600</td>
-                                <td>5,000</td>
-                                <td>電車・バス・タクシー</td>
-                            </tr>
-                            <tr>
-                                <td>北海道</td>
-                                <td>20,000</td>
-                                <td>500</td>
-                                <td>4,000</td>
-                                <td>レンタカー・電車</td>
-                            </tr>
-                            <tr>
-                                <td>沖縄</td>
-                                <td>25,000</td>
-                                <td>400</td>
-                                <td>3,500</td>
-                                <td>レンタカー・バス</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                    <p>
-                        ※上記は主要地域の在庫例です。FREEGO MALLは全国47都道府県において在庫を確保しております。<br>
-                        ※在庫数は季節やイベント開催時によって変動します。需要に応じて柔軟に在庫を調整し、ユーザーに最適なサービスを提供します。
-                    </p>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2>FREEGO MALL 実際例の - 在庫量</h2>
-                <div class="content">
-                    <h3>1. 地域別の在庫</h3>
-                    <p>
-                        実際の在庫例として、特定地域における詳細な在庫情報を提示します。
-                        例えば、東京エリアにおいては、ビジネスホテルから高級ホテル、ゲストハウスまで幅広い選択肢があり、観光施設も美術館、博物館、テーマパークなど多岐にわたります。
-                        飲食店についても、和食、洋食、中華、エスニック料理など、多様なジャンルに対応しています。
-                    </p>
-                    
-                    <table class="price-table">
-                        <thead>
-                            <tr>
-                                <th>地域</th>
-                                <th>カテゴリー</th>
-                                <th>施設名例</th>
-                                <th>在庫数</th>
-                                <th>平均単価（円）</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>東京</td>
-                                <td>ホテル</td>
-                                <td>東京ステーションホテル、パークハイアット東京</td>
-                                <td>500</td>
-                                <td>25,000</td>
-                            </tr>
-                            <tr>
-                                <td>東京</td>
-                                <td>ゲストハウス</td>
-                                <td>浅草ゲストハウス、渋谷ホステル</td>
-                                <td>200</td>
-                                <td>3,500</td>
-                            </tr>
-                            <tr>
-                                <td>東京</td>
-                                <td>観光施設</td>
-                                <td>東京タワー、スカイツリー、上野動物園</td>
-                                <td>50</td>
-                                <td>1,500</td>
-                            </tr>
-                            <tr>
-                                <td>東京</td>
-                                <td>飲食店</td>
-                                <td>すきやばし次郎、鳥貴族、一蘭</td>
-                                <td>1,000</td>
-                                <td>3,000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2>2. 季節別の在庫調整</h2>
-                <div class="content">
-                    <p>
-                        季節やイベントの開催状況に応じて、在庫数を柔軟に調整します。
-                        例えば、夏季には海水浴場周辺の宿泊施設や飲食店の在庫を増やし、冬季にはスキーリゾート周辺の在庫を強化します。
-                        また、桜の開花時期や紅葉シーズンには、人気観光地の在庫を重点的に確保し、ユーザーの需要に応えます。
-                    </p>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2>在庫管理サービス「FREEGO」在庫量</h2>
-                <div class="content">
-                    <p>
-                        FREEGOでは、リアルタイムで在庫状況を管理し、需要予測に基づいた最適な在庫配分を行います。
-                        これにより、イベント開催時や繁忙期においても、ユーザーに対して安定したサービス提供が可能となります。
-                        また、提携事業者との連携を強化し、在庫の確保と効率的な運用を実現します。
-                    </p>
-                    
-                    <table class="price-table">
-                        <thead>
-                            <tr>
-                                <th>項目</th>
-                                <th>FREEGO 提携先（全体）</th>
-                                <th>観光施設連携（件数）</th>
-                                <th>FREEGO提携（全体）</th>
-                                <th>飲食店連携（全国対応）</th>
-                                <th>宿泊施設（全国）</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>北海道</td>
-                                <td>5,000</td>
-                                <td>150</td>
-                                <td>1,200</td>
-                                <td>800</td>
-                                <td>3,000</td>
-                            </tr>
-                            <tr>
-                                <td>東北</td>
-                                <td>3,500</td>
-                                <td>100</td>
-                                <td>900</td>
-                                <td>600</td>
-                                <td>2,000</td>
-                            </tr>
-                            <tr>
-                                <td>関東</td>
-                                <td>15,000</td>
-                                <td>500</td>
-                                <td>5,000</td>
-                                <td>3,500</td>
-                                <td>8,000</td>
-                            </tr>
-                            <tr>
-                                <td>中部</td>
-                                <td>6,000</td>
-                                <td>200</td>
-                                <td>2,000</td>
-                                <td>1,500</td>
-                                <td>3,500</td>
-                            </tr>
-                            <tr>
-                                <td>近畿</td>
-                                <td>10,000</td>
-                                <td>400</td>
-                                <td>3,500</td>
-                                <td>2,500</td>
-                                <td>5,000</td>
-                            </tr>
-                            <tr>
-                                <td>中国</td>
-                                <td>3,000</td>
-                                <td>80</td>
-                                <td>800</td>
-                                <td>500</td>
-                                <td>1,800</td>
-                            </tr>
-                            <tr>
-                                <td>四国</td>
-                                <td>2,000</td>
-                                <td>60</td>
-                                <td>600</td>
-                                <td>400</td>
-                                <td>1,200</td>
-                            </tr>
-                            <tr>
-                                <td>九州</td>
-                                <td>5,500</td>
-                                <td>180</td>
-                                <td>1,500</td>
-                                <td>1,000</td>
-                                <td>3,200</td>
-                            </tr>
-                            <tr>
-                                <td>沖縄</td>
-                                <td>4,000</td>
-                                <td>120</td>
-                                <td>1,000</td>
-                                <td>700</td>
-                                <td>2,500</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2>料金表例</h2>
-                <div class="content">
-                    <table class="price-table">
-                        <thead>
-                            <tr>
-                                <th>サービス内容</th>
-                                <th>料金</th>
-                                <th>備考（割引・特典等）</th>
-                                <th>FREEGO 料金</th>
-                                <th>FREEGO プラン</th>
-                                <th>FREEGO 対象</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr style="background: #ffffcc;">
-                                <td>宿泊施設予約手数料</td>
-                                <td>予約額の10%</td>
-                                <td>プレミアム会員は5%割引</td>
-                                <td>予約額の10%</td>
-                                <td>スタンダード</td>
-                                <td>全ユーザー</td>
-                            </tr>
-                            <tr style="background: #ffffcc;">
-                                <td>観光施設入場チケット手数料</td>
-                                <td>チケット代の5%</td>
-                                <td>団体割引あり</td>
-                                <td>チケット代の5%</td>
-                                <td>スタンダード</td>
-                                <td>全ユーザー</td>
-                            </tr>
-                            <tr style="background: #ffffcc;">
-                                <td>飲食店予約手数料</td>
-                                <td>予約1件につき500円</td>
-                                <td>複数店舗予約で割引</td>
-                                <td>500円/件</td>
-                                <td>スタンダード</td>
-                                <td>全ユーザー</td>
-                            </tr>
-                            <tr>
-                                <td>交通手段予約手数料</td>
-                                <td>予約額の8%</td>
-                                <td>往復割引あり</td>
-                                <td>予約額の8%</td>
-                                <td>スタンダード</td>
-                                <td>全ユーザー</td>
-                            </tr>
-                            <tr>
-                                <td>プレミアムプラン月額料金</td>
-                                <td>1,980円/月</td>
-                                <td>年間プラン19,800円（2ヶ月分お得）</td>
-                                <td>1,980円</td>
-                                <td>プレミアム</td>
-                                <td>有料会員</td>
-                            </tr>
-                            <tr>
-                                <td>キャンセル手数料</td>
-                                <td>予約額の20%</td>
-                                <td>プレミアム会員は10%</td>
-                                <td>予約額の20%</td>
-                                <td>スタンダード</td>
-                                <td>全ユーザー</td>
-                            </tr>
-                            <tr>
-                                <td>旅行保険（オプション）</td>
-                                <td>500円～5,000円</td>
-                                <td>旅行内容に応じて変動</td>
-                                <td>500円～</td>
-                                <td>オプション</td>
-                                <td>希望者のみ</td>
-                            </tr>
-                            <tr>
-                                <td>カスタムプラン作成料</td>
-                                <td>3,000円/回</td>
-                                <td>プレミアム会員は無料</td>
-                                <td>3,000円</td>
-                                <td>スタンダード</td>
-                                <td>全ユーザー</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                    <p style="margin-top: 20px;">
-                        ※上記は基本料金の例です。実際の料金は、予約内容や時期によって変動する場合があります。<br>
-                        ※プレミアムプラン会員は、各種手数料の割引や優先予約などの特典が適用されます。
-                    </p>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2>FREEGO一料金表</h2>
-                <div class="content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>サービス内容</th>
-                                <th>料金</th>
-                                <th>備考</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>サービス利用料</td>
-                                <td>予約1件あたり500円から、または予約額の5~10%の手数料</td>
-                                <td>FREEGO基本料金</td>
-                            </tr>
-                            <tr>
-                                <td>PER</td>
-                                <td>プレミアムプラン：月額1,980円または年額19,800円<br>
-                                スタンダードプラン：無料（手数料のみ）<br>
-                                プレミアム特典：<br>
-                                ・各種手数料割引（通常の50%OFF）<br>
-                                ・優先予約権<br>
-                                ・カスタムプラン作成無料<br>
-                                ・限定イベント招待<br>
-                                ・旅行後のフォトブック作成サービス（1回/年）</td>
-                                <td>FREEGO会員種類</td>
-                            </tr>
-                            <tr>
-                                <td>広告プラン料金</td>
-                                <td>提携事業者向け広告掲載料：<br>
-                                ・バナー広告：月額50,000円～<br>
-                                ・特集ページ掲載：月額100,000円～<br>
-                                ・トップページ掲載：月額300,000円～</td>
-                                <td>-</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2>FREEGO MALL一料金表</h2>
-                <div class="content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>項目</th>
-                                <th>観光スポットチャネル</th>
-                                <th>宿泊施設チャネル</th>
-                                <th>飲食店チャネル</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>掲載基本料</td>
-                                <td>-</td>
-                                <td>20,000円/月～（ランクにより変動）</td>
-                                <td>無料</td>
-                            </tr>
-                            <tr>
-                                <td>販売手数料率</td>
-                                <td>-</td>
-                                <td>8～12%</td>
-                                <td>5～8%</td>
-                            </tr>
-                            <tr>
-                                <td>プロモーション枠</td>
-                                <td>50,000円/月～（掲載位置により変動）</td>
-                                <td>FREEGO内トップ（観光施設ページに誘導）</td>
-                                <td>FREEGO内トップ（飲食店ページに誘導）</td>
-                            </tr>
-                            <tr>
-                                <td>在庫連携システム</td>
-                                <td>リアルタイム在庫管理システム（無料提供）</td>
-                                <td>リアルタイム在庫管理システム（無料提供）または既存システムとのAPI連携（初期費用10万円）</td>
-                                <td>無料</td>
-                            </tr>
-                            <tr>
-                                <td>顧客管理支援</td>
-                                <td>-</td>
-                                <td>予約顧客データ提供、レビュー管理サポート</td>
-                                <td>-</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <h3>3. 事業方針</h3>
+                <p>FREEGOのビジネスモデルは、旅行者に対する総合的なサポートと、事業者との緊密な連携により収益を確保します。旅行者がFREEGOを通じて予約した際の手数料収入が主な収益源となり、その他に広告収益やプレミアムプラン、提携事業者からの紹介料なども収益化の手段として展開していきます。これにより、持続可能で成長性の高いビジネスモデルの構築を目指します。</p>
+
+                <div class="highlight-box">
+                    <strong>収益モデル：</strong>
+                    <ul>
+                        <li>手数料収入：ユーザーがプラットフォームを通じて予約を行った際、宿泊施設や飲食店、観光施設から手数料を徴収します。</li>
+                        <li>広告収入：地域の観光施設や飲食店がFREEGO内に広告を掲載することで、広告収入を得ます。</li>
+                        <li>プレミアムプラン：有料会員向けに、特別な割引や優先予約などの特典を提供し、サブスクリプション収益を獲得します。</li>
+                        <li>提携事業者からの紹介料：FREEGO経由で予約された旅行者を提携事業者に紹介することで、紹介料を得ます。</li>
+                    </ul>
                 </div>
             </div>
         </div>
-        
-        <!-- 2ページ目：投資編 -->
+
+        <!-- イベント/在庫ページ -->
+        <div class="page">
+            <div class="section">
+                <h2>イベント/在庫</h2>
+                
+                <p>FREEGOでは、全国各地で開催される主要イベントと連携し、イベント開催時には特別な旅行プランを提供します。これにより、イベント参加者に対して宿泊や交通、観光施設の予約をワンストップで提供し、円滑な旅行体験をサポートします。また、各地域における在庫（宿泊施設、飲食店、観光施設）を確保し、需要に応じた柔軟なサービス提供を実現します。</p>
+
+                <table>
+                    <tr>
+                        <th>イベント名</th>
+                        <th>詳細</th>
+                    </tr>
+                    <tr>
+                        <td>2025年 大阪・関西万博（EXPO 2025 OSAKA, KANSAI）</td>
+                        <td>開催期間：2025年4月13日〜10月13日（184日間）</td>
+                    </tr>
+                    <tr>
+                        <td>2026年 札幌冬季オリンピック</td>
+                        <td>開催予定</td>
+                    </tr>
+                    <tr>
+                        <td>花火大会</td>
+                        <td>隅田川花火大会、長岡花火、大曲の花火など全国の主要花火大会</td>
+                    </tr>
+                    <tr>
+                        <td>音楽フェス</td>
+                        <td>FUJI ROCK FESTIVAL、SUMMER SONIC、ROCK IN JAPANなど</td>
+                    </tr>
+                    <tr>
+                        <td>スポーツイベント</td>
+                        <td>プロ野球、Jリーグ、マラソン大会など</td>
+                    </tr>
+                    <tr>
+                        <td>地域祭り</td>
+                        <td>祇園祭、ねぶた祭、阿波踊りなど</td>
+                    </tr>
+                </table>
+
+                <p>※その他、全国各地で開催される主要イベントに対応し、旅行プランの提供を行います。</p>
+                <p>※イベント開催時には、宿泊施設の確保が困難になることが多いため、FREEGOでは事前に在庫を確保し、ユーザーに提供します。</p>
+            </div>
+        </div>
+
+        <!-- FREEGO MALL - 在庫量ページ -->
+        <div class="page">
+            <div class="section">
+                <h2>FREEGO MALL - 在庫量</h2>
+                
+                <h3>1. 地域別の在庫</h3>
+                <p>FREEGO MALLは、全国各地の宿泊施設、観光施設、飲食店などと提携し、豊富な在庫を確保しています。各地域において、宿泊施設は大規模ホテルからゲストハウスまで幅広く対応し、観光施設や飲食店についても多様な選択肢を提供します。ユーザーは、予算や目的に応じて最適なプランを選択できます。</p>
+
+                <table>
+                    <tr>
+                        <th>地域</th>
+                        <th>宿泊施設（室数）</th>
+                        <th>観光施設（件数）</th>
+                        <th>飲食店（店舗数）</th>
+                        <th>交通手段</th>
+                    </tr>
+                    <tr>
+                        <td>東京</td>
+                        <td>50,000</td>
+                        <td>1,200</td>
+                        <td>15,000</td>
+                        <td>電車・バス・タクシー</td>
+                    </tr>
+                    <tr>
+                        <td>大阪</td>
+                        <td>30,000</td>
+                        <td>800</td>
+                        <td>10,000</td>
+                        <td>電車・バス・タクシー</td>
+                    </tr>
+                    <tr>
+                        <td>京都</td>
+                        <td>15,000</td>
+                        <td>600</td>
+                        <td>5,000</td>
+                        <td>電車・バス・タクシー</td>
+                    </tr>
+                    <tr>
+                        <td>北海道</td>
+                        <td>20,000</td>
+                        <td>500</td>
+                        <td>4,000</td>
+                        <td>レンタカー・電車</td>
+                    </tr>
+                    <tr>
+                        <td>沖縄</td>
+                        <td>25,000</td>
+                        <td>400</td>
+                        <td>3,500</td>
+                        <td>レンタカー・バス</td>
+                    </tr>
+                </table>
+
+                <p>※上記は主要地域の在庫例です。FREEGO MALLは全国47都道府県において在庫を確保しております。</p>
+                <p>※在庫数は季節やイベント開催時によって変動します。需要に応じて柔軟に在庫を調整し、ユーザーに最適なサービスを提供します。</p>
+            </div>
+        </div>
+
+        <!-- FREEGO MALL 実際例の在庫量ページ -->
+        <div class="page">
+            <div class="section">
+                <h2>FREEGO MALL 実際例の - 在庫量</h2>
+                
+                <h3>1. 地域別の在庫</h3>
+                <p>実際の在庫例として、特定地域における詳細な在庫情報を提示します。例えば、東京エリアにおいては、ビジネスホテルから高級ホテル、ゲストハウスまで幅広い選択肢があり、観光施設も美術館、博物館、テーマパークなど多岐にわたります。飲食店についても、和食、洋食、中華、エスニック料理など、多様なジャンルに対応しています。</p>
+
+                <table>
+                    <tr>
+                        <th>地域</th>
+                        <th>カテゴリー</th>
+                        <th>施設名例</th>
+                        <th>在庫数</th>
+                        <th>平均単価（円）</th>
+                    </tr>
+                    <tr>
+                        <td>東京</td>
+                        <td>ホテル</td>
+                        <td>東京ステーションホテル、パークハイアット東京</td>
+                        <td>500</td>
+                        <td>25,000</td>
+                    </tr>
+                    <tr>
+                        <td>東京</td>
+                        <td>ゲストハウス</td>
+                        <td>浅草ゲストハウス、渋谷ホステル</td>
+                        <td>200</td>
+                        <td>3,500</td>
+                    </tr>
+                    <tr>
+                        <td>東京</td>
+                        <td>観光施設</td>
+                        <td>東京タワー、スカイツリー、上野動物園</td>
+                        <td>50</td>
+                        <td>1,500</td>
+                    </tr>
+                    <tr>
+                        <td>東京</td>
+                        <td>飲食店</td>
+                        <td>すきやばし次郎、鳥貴族、一蘭</td>
+                        <td>1,000</td>
+                        <td>3,000</td>
+                    </tr>
+                </table>
+
+                <h3>2. 季節別の在庫調整</h3>
+                <p>季節やイベントの開催状況に応じて、在庫数を柔軟に調整します。例えば、夏季には海水浴場周辺の宿泊施設や飲食店の在庫を増やし、冬季にはスキーリゾート周辺の在庫を強化します。また、桜の開花時期や紅葉シーズンには、人気観光地の在庫を重点的に確保し、ユーザーの需要に応えます。</p>
+            </div>
+        </div>
+
+        <!-- 在庫管理サービス「FREEGO」在庫量ページ -->
+        <div class="page">
+            <div class="section">
+                <h2>在庫管理サービス「FREEGO」在庫量</h2>
+                
+                <p>FREEGOでは、リアルタイムで在庫状況を管理し、需要予測に基づいた最適な在庫配分を行います。これにより、イベント開催時や繁忙期においても、ユーザーに対して安定したサービス提供が可能となります。また、提携事業者との連携を強化し、在庫の確保と効率的な運用を実現します。</p>
+
+                <table>
+                    <tr>
+                        <th>項目</th>
+                        <th>FREEGO 提携先（全体）</th>
+                        <th>観光施設連携（件数）</th>
+                        <th>FREEGO提携（全体）</th>
+                        <th>飲食店連携（全国対応）</th>
+                        <th>宿泊施設（全国）</th>
+                    </tr>
+                    <tr>
+                        <td>北海道</td>
+                        <td>5,000</td>
+                        <td>150</td>
+                        <td>1,200</td>
+                        <td>800</td>
+                        <td>3,000</td>
+                    </tr>
+                    <tr>
+                        <td>東北</td>
+                        <td>3,500</td>
+                        <td>100</td>
+                        <td>900</td>
+                        <td>600</td>
+                        <td>2,000</td>
+                    </tr>
+                    <tr>
+                        <td>関東</td>
+                        <td>15,000</td>
+                        <td>500</td>
+                        <td>5,000</td>
+                        <td>3,500</td>
+                        <td>8,000</td>
+                    </tr>
+                    <tr>
+                        <td>中部</td>
+                        <td>6,000</td>
+                        <td>200</td>
+                        <td>2,000</td>
+                        <td>1,500</td>
+                        <td>3,500</td>
+                    </tr>
+                    <tr>
+                        <td>近畿</td>
+                        <td>10,000</td>
+                        <td>400</td>
+                        <td>3,500</td>
+                        <td>2,500</td>
+                        <td>5,000</td>
+                    </tr>
+                    <tr>
+                        <td>中国</td>
+                        <td>3,000</td>
+                        <td>80</td>
+                        <td>800</td>
+                        <td>500</td>
+                        <td>1,800</td>
+                    </tr>
+                    <tr>
+                        <td>四国</td>
+                        <td>2,000</td>
+                        <td>60</td>
+                        <td>600</td>
+                        <td>400</td>
+                        <td>1,200</td>
+                    </tr>
+                    <tr>
+                        <td>九州</td>
+                        <td>5,500</td>
+                        <td>180</td>
+                        <td>1,500</td>
+                        <td>1,000</td>
+                        <td>3,200</td>
+                    </tr>
+                    <tr>
+                        <td>沖縄</td>
+                        <td>4,000</td>
+                        <td>120</td>
+                        <td>1,000</td>
+                        <td>700</td>
+                        <td>2,500</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 料金表例ページ -->
+        <div class="page">
+            <div class="section">
+                <h2>料金表例</h2>
+                
+                <table>
+                    <tr>
+                        <th>サービス内容</th>
+                        <th>料金</th>
+                        <th>備考（割引・特典等）</th>
+                        <th>FREEGO料金</th>
+                        <th>FREEGOプラン</th>
+                        <th>FREEGO対象</th>
+                    </tr>
+                    <tr style="background: #fffacd;">
+                        <td>宿泊施設予約手数料</td>
+                        <td>予約額の10%</td>
+                        <td>プレミアム会員は5%割引</td>
+                        <td>予約額の10%</td>
+                        <td>スタンダード</td>
+                        <td>全ユーザー</td>
+                    </tr>
+                    <tr style="background: #fffacd;">
+                        <td>観光施設入場チケット手数料</td>
+                        <td>チケット代の5%</td>
+                        <td>団体割引あり</td>
+                        <td>チケット代の5%</td>
+                        <td>スタンダード</td>
+                        <td>全ユーザー</td>
+                    </tr>
+                    <tr style="background: #fffacd;">
+                        <td>飲食店予約手数料</td>
+                        <td>予約1件につき500円</td>
+                        <td>複数店舗予約で割引</td>
+                        <td>500円/件</td>
+                        <td>スタンダード</td>
+                        <td>全ユーザー</td>
+                    </tr>
+                    <tr style="background: #fffacd;">
+                        <td>交通手段予約手数料</td>
+                        <td>予約額の8%</td>
+                        <td>往復割引あり</td>
+                        <td>予約額の8%</td>
+                        <td>スタンダード</td>
+                        <td>全ユーザー</td>
+                    </tr>
+                    <tr>
+                        <td>プレミアムプラン月額料金</td>
+                        <td>1,980円/月</td>
+                        <td>年間プラン19,800円（2ヶ月分お得）</td>
+                        <td>1,980円</td>
+                        <td>プレミアム</td>
+                        <td>有料会員</td>
+                    </tr>
+                    <tr style="background: #fffacd;">
+                        <td>キャンセル手数料</td>
+                        <td>予約額の20%</td>
+                        <td>プレミアム会員は10%</td>
+                        <td>予約額の20%</td>
+                        <td>スタンダード</td>
+                        <td>全ユーザー</td>
+                    </tr>
+                    <tr>
+                        <td>旅行保険（オプション）</td>
+                        <td>500円〜5,000円</td>
+                        <td>旅行内容に応じて変動</td>
+                        <td>500円〜</td>
+                        <td>オプション</td>
+                        <td>希望者のみ</td>
+                    </tr>
+                    <tr style="background: #fffacd;">
+                        <td>カスタムプラン作成料</td>
+                        <td>3,000円/回</td>
+                        <td>プレミアム会員は無料</td>
+                        <td>3,000円</td>
+                        <td>スタンダード</td>
+                        <td>全ユーザー</td>
+                    </tr>
+                </table>
+
+                <p>※上記は基本料金の例です。実際の料金は、予約内容や時期によって変動する場合があります。</p>
+                <p>※プレミアムプラン会員は、各種手数料の割引や優先予約などの特典が適用されます。</p>
+            </div>
+        </div>
+
+        <!-- FREEGO一料金表ページ -->
+        <div class="page">
+            <div class="section">
+                <h2>FREEGO一料金表</h2>
+                
+                <table>
+                    <tr>
+                        <th>サービス内容</th>
+                        <th>料金</th>
+                        <th>備考</th>
+                    </tr>
+                    <tr>
+                        <td>サービス利用料</td>
+                        <td>予約1件あたり500円から、または予約額の5~10%の手数料</td>
+                        <td>FREEGO基本料金</td>
+                    </tr>
+                    <tr>
+                        <td>PER</td>
+                        <td>
+                            プレミアムプラン：月額1,980円または年額19,800円<br>
+                            スタンダードプラン：無料（手数料のみ）<br>
+                            プレミアム特典：<br>
+                            ・各種手数料割引（通常の50%OFF）<br>
+                            ・優先予約権<br>
+                            ・カスタムプラン作成無料<br>
+                            ・限定イベント招待<br>
+                            ・旅行後のフォトブック作成サービス（1回/年）
+                        </td>
+                        <td>FREEGO会員種類</td>
+                    </tr>
+                    <tr>
+                        <td>広告プラン料金</td>
+                        <td>
+                            提携事業者向け広告掲載料：<br>
+                            ・バナー広告：月額50,000円〜<br>
+                            ・特集ページ掲載：月額100,000円〜<br>
+                            ・トップページ掲載：月額300,000円〜
+                        </td>
+                        <td>-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- FREEGO MALL一料金表ページ -->
+        <div class="page">
+            <div class="section">
+                <h2>FREEGO MALL一料金表</h2>
+                
+                <table>
+                    <tr>
+                        <th>項目</th>
+                        <th>観光スポットチャネル</th>
+                        <th>宿泊施設チャネル</th>
+                        <th>飲食店チャネル</th>
+                    </tr>
+                    <tr>
+                        <td>掲載基本料</td>
+                        <td>-</td>
+                        <td>20,000円/月〜（ランクにより変動）</td>
+                        <td>無料</td>
+                    </tr>
+                    <tr>
+                        <td>販売手数料率</td>
+                        <td>-</td>
+                        <td>8〜12%</td>
+                        <td>5〜8%</td>
+                    </tr>
+                    <tr>
+                        <td>プロモーション枠</td>
+                        <td>50,000円/月〜（掲載位置により変動）</td>
+                        <td>FREEGO内トップ（観光施設ページに誘導）</td>
+                        <td>FREEGO内トップ（飲食店ページに誘導）</td>
+                    </tr>
+                    <tr>
+                        <td>在庫連携システム</td>
+                        <td>リアルタイム在庫管理システム（無料提供）</td>
+                        <td>リアルタイム在庫管理システム（無料提供）または既存システムとのAPI連携（初期費用10万円）</td>
+                        <td>無料</td>
+                    </tr>
+                    <tr>
+                        <td>顧客管理支援</td>
+                        <td>-</td>
+                        <td>予約顧客データ提供、レビュー管理サポート</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 投資編タイトルページ -->
         <div class="page">
             <div class="header">
-                <h1>「FREEGO」事業の概要</h1>
-                <div class="subtitle">投資編</div>
+                <div class="header-content">
+                    <h1>「FREEGO」事業の概要</h1>
+                    <div class="subtitle">投資編</div>
+                </div>
                 <div class="date">
                     2025.10.10.V1<br>
                     Hands-Free Travel 株式会社<br>
@@ -892,222 +657,212 @@
                 </div>
             </div>
         </div>
-        
-        <div class="page content-page">
+
+        <!-- 年度別計画ページ -->
+        <div class="page">
             <div class="section">
                 <h2>**年度別計画</h2>
-                <div class="content">
-                    <h3>▶2025年度</h3>
-                    <ul>
-                        <li>売上高：<span class="number">397百万円</span></li>
-                        <li>PER：<span class="number">30倍</span></li>
-                        <li>推定時価総額：<span class="number">1 ≒ 30 ≒ 11.7兆円規模</span></li>
-                        <li>想定：<span class="number">1株 ≒ 30億円 ～ ≒ 1.0億円/1万株 ≒ 1.0億万円/1株</span></li>
-                    </ul>
-                    
-                    <h3>▶2026年度</h3>
-                    <ul>
-                        <li>売上高：<span class="number">1,082百万円</span></li>
-                        <li>PER：<span class="number">30倍</span></li>
-                        <li>推定時価総額：<span class="number">1 ≒ 1兆円 ≒ 30 ≒ 1兆2,500億円規模</span></li>
-                        <li>想定：<span class="number">株式総数：7,300億 ≒ 8,125億円/7T株 ≒ 8.2億円/万株 ≒ 2.5億円/1株</span></li>
-                    </ul>
-                    
-                    <h3>▶2027年度</h3>
-                    <ul>
-                        <li>売上高：<span class="number">2,800百万円</span></li>
-                        <li>PER：<span class="number">30倍</span></li>
-                        <li>推定時価総額：<span class="number">3 ≒ 3兆円 ≒ 30 ≒ 2兆8,000億円規模</span></li>
-                        <li>想定：<span class="number">株式総数：9,500億 ≒ 1.4兆円/9.5T株 ≒ 14億円/万株 ≒ 4.2億円/1株</span></li>
-                    </ul>
-                    
-                    <h3>▶2028年度</h3>
-                    <ul>
-                        <li>売上高：<span class="number">4,673百万円</span></li>
-                        <li>PER：<span class="number">30倍</span></li>
-                        <li>推定時価総額：<span class="number">4 ≒ 4兆円 ≒ 30 ≒ 4兆6,730億円規模</span></li>
-                        <li>想定：<span class="number">株式総数：14,400億 ≒ 2.2兆円/14T株 ≒ 22億円/万株 ≒ 7.0億円/1株</span></li>
-                    </ul>
-                    
-                    <div class="warning-box">
-                        <strong>補足：</strong><br>
-                        2025年度以降の推定では、売上は徐々に増加傾向になると想定しています。<br>
-                        PER、時価総額、株価等は今後の業績次第で変動する可能性があります。<br>
-                        株価 = IPO（新規株式公開）後<br>
-                        調達額 = 現況約2,500億円
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2>**転換社債の設計</h2>
-                <div class="content">
-                    <p>
-                        段階的に資金を調達し、業績に連動した転換価格を設定します。
-                    </p>
-                    
-                    <h3>▶転換価格の計算式</h3>
-                    <div class="highlight-box">
-                        <div class="formula">
-転換価格 = (前年度の時価総額 × 係数 + 前々年度の時価総額) ÷ 2 ÷ 500,000株 ÷# 2,000円
-                        </div>
-                    </div>
-                    
-                    <h3>▶転換社債詳細</h3>
-                    
-                    <h4>【2025年度】</h4>
-                    <ul>
-                        <li>発行額：472,500円（年度初額47円）</li>
-                        <li>転換価格：28円</li>
-                        <li>転換株式数：4,775万株～1.05億株</li>
-                        <li>転換時期：2年目～（条件達成時期）</li>
-                        <li>転換対象：1年後～</li>
-                        <li>使途目的：初期構造投資（Call Option）、営業費用、追加資金投資</li>
-                        <li>株式保証書：電子記録債権を発行し、大株主や機関投資家に配当を集中させることで、それぞれのインセンティブを明確にする。また、クラウドファンディング（総資本収納のごく一部を含む）などの条件等により、上記該当金額の範囲内で転換することとします。</li>
-                    </ul>
-                    
-                    <h4>▶運営費用：</h4>
-                    <ul>
-                        <li>初期設備投資（Call Option）</li>
-                        <li>営業費用：472,500円(1-2) ～ 996,400円</li>
-                        <li>転換株主価値向上：1,800,400円（転換額 = 転換株数）</li>
-                        <li>さらに、転換保証価格の1,800,400円であるため、転換株主に追加収益をもたらします。</li>
-                    </ul>
-                    
-                    <div class="warning-box">
-                        <strong>まとめ：</strong><br>
-                        この転換社債の設計は、段階的に資金を調達しながら、業績向上に伴う株式価値の上昇を投資家に還元する仕組みとなっています。
-                        転換株主は、企業成長に応じた利益を享受でき、企業側も柔軟な資金調達が可能となります。
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2>**PER</h2>
-                <div class="content">
-                    <h3>**PER（株価収益率）とは</h3>
-                    <p>
-                        「PER（株価収益率）」は、株価が利益の何倍かを示す指標です。
-                        企業の成長性や収益性を評価する際に広く使われる指標であり、投資判断の重要な基準となります。
-                    </p>
-                    
-                    <div class="formula">
-PER（株価収益率） = 株価 ÷ 1株当たり利益（EPS）
-                    </div>
-                    
-                    <p>
-                        PERが高いほど、市場はその企業の将来的な成長を期待していることを意味します。
-                        一方、PERが低い場合は、割安と判断されることもありますが、成長性が低いと評価されている可能性もあります。
-                    </p>
-                    
-                    <h3>PER 30倍の根拠と基準</h3>
-                    <p>
-                        FREEGOでは、事業の成長性と市場のポテンシャルを考慮し、PER 30倍を基準として設定しています。
-                        これは以下のような企業類型において妥当とされる水準です。
-                    </p>
-                    
-                    <div class="highlight-box">
-                        <h4>PER 30倍が妥当な企業例：</h4>
-                        <ul>
-                            <li>ハイテク / テクノロジー企業（高成長期）</li>
-                            <li>SaaSビジネス（クラウドサービス企業）</li>
-                            <li>市場シェア拡大中の企業（E-コマース / フィンテック）</li>
-                            <li>バイオ / ヘルスケア企業</li>
-                            <li>クリーンエネルギー企業（脱炭素テクノロジー企業）</li>
-                            <li>AI関連企業</li>
-                            <li>メディア / エンターテインメント企業</li>
-                            <li>サブスクリプションビジネス</li>
-                            <li>ゲーム / モバイルアプリ企業</li>
-                            <li>革新的スタートアップ</li>
-                            <li>Spotify（音楽ストリーミング企業）</li>
-                            <li>医療機器 / MedTech企業</li>
-                            <li>ロボティクス企業</li>
-                            <li>Social Media（体験型ソーシャル企業サービス）</li>
-                        </ul>
-                    </div>
-                    
-                    <h3>PERの比較と選択背景</h3>
-                    <div class="highlight-box" style="page-break-before: always;">
-                        <h4>PER 30倍を選択した理由：</h4>
-                        <p>
-                            FREEGOがPER 30倍を採用する理由は、以下の通りです。
-                        </p>
-                        <ul>
-                            <li>高成長期の企業として1～3年で事業を5倍以上に拡大する計画があること</li>
-                            <li>インターネットビジネス（旅行×テクノロジー企業）としての成長性が高いこと</li>
-                            <li>SaaSやPaaSと同様にプラットフォームを通じた収益モデルを採用していること</li>
-                        </ul>
-                        
-                        <p style="margin-top: 15px;"><strong>補足：PERの一般的な水準</strong></p>
-                        <ul>
-                            <li><strong>低PER（5～20倍）：</strong> 成熟企業や安定成長企業</li>
-                            <li><strong>中PER（20～30倍）：</strong> 成長企業や市場拡大中の企業</li>
-                            <li><strong>高PER（30～50倍以上）：</strong> 高成長企業や革新的技術を持つ企業</li>
-                        </ul>
-                        
-                        <p style="margin-top: 15px;">
-                            FREEGOは、旅行業界におけるプラットフォームビジネスとして、今後の市場拡大と収益成長が期待されるため、PER 30倍という水準が妥当であると判断しています。
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2>**転換のインセンティブ</h2>
-                <div class="content">
-                    <p>
-                        転換社債から株式への転換を促進するため、投資家に対して以下のインセンティブを提供します。
-                        これにより、投資家と企業の双方にメリットがある仕組みを構築しています。
-                    </p>
-                    
-                    <h3>企業価値の向上（収益増加）の根拠</h3>
-                    <p>FREEGOの企業価値向上は、以下の要因によって実現されます。</p>
-                    <ul>
-                        <li><strong>市場拡大：</strong> 旅行業界のデジタル化が進む中、FREEGOのプラットフォームは国内外での需要拡大が見込まれます。</li>
-                        <li><strong>事業成長の加速化：</strong> 提携先の増加やサービスの多様化により、売上と収益が継続的に成長します。</li>
-                        <li><strong>戦略的パートナーシップ：</strong> 大手旅行会社や観光施設、交通機関との連携を強化し、事業基盤を拡大します。</li>
-                    </ul>
-                    
-                    <h3>債権回収</h3>
-                    <ul>
-                        <li><strong>利息支払いと元本返済：</strong> 転換しない場合でも、定期的な利息収入が保証されます。</li>
-                    </ul>
-                    
-                    <h3>企業価値増加による株式価値の上昇</h3>
-                    <p>転換社債を株式に転換することで、以下の利益を享受できます。</p>
-                    <ul>
-                        <li><strong>市場での評価向上：</strong> 企業の成長に伴い、株価が上昇することで、保有株式の価値が増加します。</li>
-                        <li><strong>財務の健全化と成長の持続性：</strong> 安定した財務基盤と継続的な成長により、長期的な株価上昇が期待されます。</li>
-                        <li><strong>転換条項による割引価格での転換権：</strong> 一定の条件下で、市場価格よりも有利な価格で株式に転換できる権利が付与されます。</li>
-                    </ul>
-                    
-                    <h3>透明性の高い情報開示</h3>
-                    <p>
-                        投資家の信頼を獲得し、適切な投資判断を支援するため、以下の情報開示を徹底します。
-                    </p>
-                    <ul>
-                        <li><strong>定期的な業績報告と説明会の開催：</strong> 四半期ごとに業績報告を行い、投資家との対話の機会を設けます。</li>
-                        <li><strong>四半期ごとの財務報告と事業進捗の詳細開示：</strong> 財務状況や事業の進捗状況を詳細に公開します。</li>
-                        <li><strong>投資家向けIR資料の充実とwebサイトでの公開：</strong> IR情報を常に最新の状態で公開し、アクセスしやすい環境を整備します。</li>
-                        <li><strong>経営陣との直接対話の機会（株主総会、説明会など）：</strong> 株主総会や個別説明会を通じて、経営陣と投資家の直接的なコミュニケーションを促進します。</li>
-                        <li><strong>市場動向や業界トレンドに関する分析情報の提供：</strong> 業界全体の動向を分析し、FREEGOの位置づけを明確に示します。</li>
-                        <li><strong>リスク要因の明確な開示と対応策の説明：</strong> 事業に関するリスクを包み隠さず開示し、その対応策を具体的に説明します。</li>
-                    </ul>
-                    
-                    <div class="highlight-box">
-                        <h4>まとめ</h4>
-                        <p>
-                            転換社債（CB：Convertible Bond）は、投資家にとって柔軟な投資手段を提供します。
-                            企業価値が増加した際には株式に転換して株価上昇の恩恵を受けることができ、転換しない場合でも利息収入を得られるという、二重のメリットを享受できます。
-                        </p>
-                        <p style="margin-top: 12px;">
-                            一方、企業側にとっても、成長段階において必要な資金を柔軟に調達でき、株式希薄化のリスクを抑えながら事業拡大を進めることができます。
-                            このように、転換社債は投資家と企業の双方にとって Win-Win の関係を構築する仕組みとなっています。
-                        </p>
-                    </div>
+                
+                <h3>▶2025年度</h3>
+                <ul>
+                    <li>売上高：397百万円</li>
+                    <li>PER：30倍</li>
+                    <li>推定時価総額：1 ≒ 30 ≒ 11.7兆円規模</li>
+                    <li>想定：1株 ≒ 30億円 〜 ≒ 1.0億円/1万株 ≒ 1.0億万円/1株</li>
+                </ul>
+
+                <h3>▶2026年度</h3>
+                <ul>
+                    <li>売上高：1,082百万円</li>
+                    <li>PER：30倍</li>
+                    <li>推定時価総額：1 ≒ 1兆円 ≒ 30 ≒ 1兆2,500億円規模</li>
+                    <li>想定：株式総数：7,300億 ≒ 8,125億円/7T株 ≒ 8.2億円/万株 ≒ 2.5億円/1株</li>
+                </ul>
+
+                <h3>▶2027年度</h3>
+                <ul>
+                    <li>売上高：2,800百万円</li>
+                    <li>PER：30倍</li>
+                    <li>推定時価総額：3 ≒ 3兆円 ≒ 30 ≒ 2兆8,000億円規模</li>
+                    <li>想定：株式総数：9,500億 ≒ 1.4兆円/9.5T株 ≒ 14億円/万株 ≒ 4.2億円/1株</li>
+                </ul>
+
+                <h3>▶2028年度</h3>
+                <ul>
+                    <li>売上高：4,673百万円</li>
+                    <li>PER：30倍</li>
+                    <li>推定時価総額：4 ≒ 4兆円 ≒ 30 ≒ 4兆6,730億円規模</li>
+                    <li>想定：株式総数：14,400億 ≒ 2.2兆円/14T株 ≒ 22億円/万株 ≒ 7.0億円/1株</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>補足：</strong><br>
+                    2025年度以降の推定では、売上は徐々に増加傾向になると想定しています。<br>
+                    PER、時価総額、株価等は今後の業績次第で変動する可能性があります。<br>
+                    株価 = IPO（新規株式公開）後<br>
+                    調達額 = 現況約2,500億円
                 </div>
             </div>
         </div>
+
+        <!-- 転換社債の設計ページ -->
+        <div class="page">
+            <div class="section">
+                <h2>**転換社債の設計</h2>
+                
+                <p>段階的に資金を調達し、業績に連動した転換価格を設定します。</p>
+
+                <h3>▶転換価格の計算式</h3>
+                <div class="highlight-box">
+                    転換価格 = (前年度の時価総額 × 係数 + 前々年度の時価総額) ÷ 2 ÷ 500,000株 ÷ 2,000円
+                </div>
+
+                <h3>▶転換社債詳細</h3>
+                <h3>【2025年度】</h3>
+                <ul>
+                    <li>発行額：472,500円（年度初額47円）</li>
+                    <li>転換価格：28円</li>
+                    <li>転換株式数：4,775万株〜1.05億株</li>
+                    <li>転換時期：2年目〜（条件達成時期）</li>
+                    <li>転換対象：1年後〜</li>
+                    <li>使途目的：初期構造投資（Call Option）、営業費用、追加資金投資</li>
+                    <li>株式保証書：電子記録債権を発行し、大株主や機関投資家に配当を集中させることで、それぞれのインセンティブを明確にする。また、クラウドファンディング（総資本収納のごく一部を含む）などの条件等により、上記該当金額の範囲内で転換することとします。</li>
+                </ul>
+
+                <h3>▶運営費用：</h3>
+                <ul>
+                    <li>初期設備投資（Call Option）</li>
+                    <li>営業費用：472,500円(1-2) 〜 996,400円</li>
+                    <li>転換株主価値向上：1,800,400円（転換額 = 転換株数）</li>
+                    <li>さらに、転換保証価格の1,800,400円であるため、転換株主に追加収益をもたらします。</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>まとめ：</strong><br>
+                    この転換社債の設計は、段階的に資金を調達しながら、業績向上に伴う株式価値の上昇を投資家に還元する仕組みとなっています。転換株主は、企業成長に応じた利益を享受でき、企業側も柔軟な資金調達が可能となります。
+                </div>
+            </div>
+        </div>
+
+        <!-- PERページ -->
+        <div class="page">
+            <div class="section">
+                <h2>**PER</h2>
+                
+                <h3>**PER（株価収益率）とは</h3>
+                <p>「PER（株価収益率）」は、株価が利益の何倍かを示す指標です。企業の成長性や収益性を評価する際に広く使われる指標であり、投資判断の重要な基準となります。</p>
+
+                <div class="highlight-box">
+                    PER（株価収益率） = 株価 ÷ 1株当たり利益（EPS）
+                </div>
+
+                <p>PERが高いほど、市場はその企業の将来的な成長を期待していることを意味します。一方、PERが低い場合は、割安と判断されることもありますが、成長性が低いと評価されている可能性もあります。</p>
+
+                <h3>PER 30倍の根拠と基準</h3>
+                <p>FREEGOでは、事業の成長性と市場のポテンシャルを考慮し、PER 30倍を基準として設定しています。これは以下のような企業類型において妥当とされる水準です。</p>
+            </div>
+        </div>
+
+        <!-- PER比較ページ -->
+        <div class="page">
+            <div class="section">
+                <h2>PERの比較と選択背景</h2>
+
+                <div class="highlight-box">
+                    <strong>PER 30倍が妥当な企業例：</strong>
+                    <ul>
+                        <li>ハイテク / テクノロジー企業（高成長期）</li>
+                        <li>SaaSビジネス（クラウドサービス企業）</li>
+                        <li>市場シェア拡大中の企業（E-コマース / フィンテック）</li>
+                        <li>バイオ / ヘルスケア企業</li>
+                        <li>クリーンエネルギー企業（脱炭素テクノロジー企業）</li>
+                        <li>AI関連企業</li>
+                        <li>メディア / エンターテインメント企業</li>
+                        <li>サブスクリプションビジネス</li>
+                        <li>ゲーム / モバイルアプリ企業</li>
+                        <li>革新的スタートアップ</li>
+                        <li>Spotify（音楽ストリーミング企業）</li>
+                        <li>医療機器 / MedTech企業</li>
+                        <li>ロボティクス企業</li>
+                        <li>Social Media（体験型ソーシャル企業サービス）</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>PER 30倍を選択した理由：</strong>
+                    <p>FREEGOがPER 30倍を採用する理由は、以下の通りです。</p>
+                    <ul>
+                        <li>高成長期の企業として1〜3年で事業を5倍以上に拡大する計画があること</li>
+                        <li>インターネットビジネス（旅行×テクノロジー企業）としての成長性が高いこと</li>
+                        <li>SaaSやPaaSと同様にプラットフォームを通じた収益モデルを採用していること</li>
+                    </ul>
+
+                    <strong>補足：PERの一般的な水準</strong>
+                    <ul>
+                        <li>低PER（5〜20倍）：成熟企業や安定成長企業</li>
+                        <li>中PER（20〜30倍）：成長企業や市場拡大中の企業</li>
+                        <li>高PER（30〜50倍以上）：高成長企業や革新的技術を持つ企業</li>
+                    </ul>
+
+                    <p>FREEGOは、旅行業界におけるプラットフォームビジネスとして、今後の市場拡大と収益成長が期待されるため、PER 30倍という水準が妥当であると判断しています。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 転換のインセンティブページ -->
+        <div class="page">
+            <div class="section">
+                <h2>**転換のインセンティブ</h2>
+                
+                <p>転換社債から株式への転換を促進するため、投資家に対して以下のインセンティブを提供します。これにより、投資家と企業の双方にメリットがある仕組みを構築しています。</p>
+
+                <h3>企業価値の向上（収益増加）の根拠</h3>
+                <p>FREEGOの企業価値向上は、以下の要因によって実現されます。</p>
+                <ul>
+                    <li><strong>市場拡大：</strong>旅行業界のデジタル化が進む中、FREEGOのプラットフォームは国内外での需要拡大が見込まれます。</li>
+                    <li><strong>事業成長の加速化：</strong>提携先の増加やサービスの多様化により、売上と収益が継続的に成長します。</li>
+                    <li><strong>戦略的パートナーシップ：</strong>大手旅行会社や観光施設、交通機関との連携を強化し、事業基盤を拡大します。</li>
+                </ul>
+
+                <h3>債権回収</h3>
+                <ul>
+                    <li><strong>利息支払いと元本返済：</strong>転換しない場合でも、定期的な利息収入が保証されます。</li>
+                </ul>
+
+                <h3>企業価値増加による株式価値の上昇</h3>
+                <p>転換社債を株式に転換することで、以下の利益を享受できます。</p>
+                <ul>
+                    <li>市場での評価向上：企業の成長に伴い、株価が上昇することで、保有株式の価値が増加します。</li>
+                    <li>財務の健全化と成長の持続性：安定した財務基盤と継続的な成長により、長期的な株価上昇が期待されます。</li>
+                    <li>転換条項による割引価格での転換権：一定の条件下で、市場価格よりも有利な価格で株式に転換できる権利が付与されます。</li>
+                </ul>
+
+                <h3>透明性の高い情報開示</h3>
+                <p>投資家の信頼を獲得し、適切な投資判断を支援するため、以下の情報開示を徹底します。</p>
+                <ul>
+                    <li>定期的な業績報告と説明会の開催：四半期ごとに業績報告を行い、投資家との対話の機会を設けます。</li>
+                    <li>四半期ごとの財務報告と事業進捗の詳細開示：財務状況や事業の進捗状況を詳細に公開します。</li>
+                    <li>投資家向けIR資料の充実とwebサイトでの公開：IR情報を常に最新の状態で公開し、アクセスしやすい環境を整備します。</li>
+                    <li>経営陣との直接対話の機会（株主総会、説明会など）：株主総会や個別説明会を通じて、経営陣と投資家の直接的なコミュニケーションを促進します。</li>
+                    <li>市場動向や業界トレンドに関する分析情報の提供：業界全体の動向を分析し、FREEGOの位置づけを明確に示します。</li>
+                    <li>リスク要因の明確な開示と対応策の説明：事業に関するリスクを包み隠さず開示し、その対応策を具体的に説明します。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- まとめページ -->
+        <div class="page">
+            <div class="section">
+                <h2>まとめ</h2>
+                
+                <div class="highlight-box">
+                    <p>転換社債（CB：Convertible Bond）は、投資家にとって柔軟な投資手段を提供します。企業価値が増加した際には株式に転換して株価上昇の恩恵を受けることができ、転換しない場合でも利息収入を得られるという、二重のメリットを享受できます。</p>
+
+                    <p>一方、企業側にとっても、成長段階において必要な資金を柔軟に調達でき、株式希薄化のリスクを抑えながら事業拡大を進めることができます。このように、転換社債は投資家と企業の双方にとって Win-Win の関係を構築する仕組みとなっています。</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>
