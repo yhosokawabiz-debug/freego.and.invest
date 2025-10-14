@@ -9,13 +9,17 @@
             margin: 20mm;
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
             line-height: 1.9;
             color: #333;
             background: #f5f5f5;
-            margin: 0;
-            padding: 0;
         }
 
         .container {
@@ -27,28 +31,28 @@
         .page {
             padding: 70px 60px;
             margin-bottom: 0;
+            min-height: 100vh;
         }
 
         /* タイトルページ用の特別なスタイル */
-        .header {
+        .title-page {
             position: relative;
             min-height: 100vh;
-            padding: 100px 60px;
+            padding: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             background: white;
-            box-sizing: border-box;
         }
 
-        /* タイトルと副題のコンテナ */
-        .header-content {
+        .title-content {
             text-align: center;
             z-index: 10;
+            padding: 0 60px;
         }
 
-        .header h1 {
+        .title-page h1 {
             font-size: 56px;
             color: #2c5aa0;
             margin: 0 0 40px 0;
@@ -56,7 +60,7 @@
             letter-spacing: 2px;
         }
 
-        .header .subtitle {
+        .title-page .subtitle {
             font-size: 42px;
             color: #666;
             margin: 0;
@@ -64,8 +68,7 @@
             letter-spacing: 4px;
         }
 
-        /* 右下の日付・会社情報 */
-        .header .date {
+        .title-page .date-info {
             position: absolute;
             bottom: 60px;
             right: 60px;
@@ -152,15 +155,38 @@
             background: #f9f9f9;
         }
 
+        /* PDF出力ボタン */
+        .print-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2c5aa0;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(44, 90, 160, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .print-button:hover {
+            background: #1e3a8a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 90, 160, 0.6);
+        }
+
         @media print {
-            .header {
-                min-height: 100vh;
-                page-break-after: always;
-                border-bottom: none;
+            .print-button {
+                display: none;
             }
 
-            .page {
+            .title-page, .page {
                 page-break-after: always;
+                min-height: 100vh;
             }
 
             .section {
@@ -172,17 +198,15 @@
 <body>
     <div class="container">
         <!-- 事業戦略編タイトルページ -->
-        <div class="page">
-            <div class="header">
-                <div class="header-content">
-                    <h1>「FREEGO」事業の概要</h1>
-                    <div class="subtitle">事業戦略編</div>
-                </div>
-                <div class="date">
-                    2025.10.10.V1<br>
-                    Hands-Free Travel 株式会社<br>
-                    © 2025 Hands-Free Travel Inc.
-                </div>
+        <div class="title-page">
+            <div class="title-content">
+                <h1>「FREEGO」事業の概要</h1>
+                <div class="subtitle">事業戦略編</div>
+            </div>
+            <div class="date-info">
+                2025.10.10.V1<br>
+                Hands-Free Travel 株式会社<br>
+                © 2025 Hands-Free Travel Inc.
             </div>
         </div>
 
@@ -644,17 +668,15 @@
         </div>
 
         <!-- 投資編タイトルページ -->
-        <div class="page">
-            <div class="header">
-                <div class="header-content">
-                    <h1>「FREEGO」事業の概要</h1>
-                    <div class="subtitle">投資編</div>
-                </div>
-                <div class="date">
-                    2025.10.10.V1<br>
-                    Hands-Free Travel 株式会社<br>
-                    © 2025 Hands-Free Travel Inc.
-                </div>
+        <div class="title-page">
+            <div class="title-content">
+                <h1>「FREEGO」事業の概要</h1>
+                <div class="subtitle">投資編</div>
+            </div>
+            <div class="date-info">
+                2025.10.10.V1<br>
+                Hands-Free Travel 株式会社<br>
+                © 2025 Hands-Free Travel Inc.
             </div>
         </div>
 
@@ -864,5 +886,14 @@
         </div>
 
     </div>
+    
+    <!-- PDF出力ボタン -->
+    <button class="print-button" onclick="window.print()">📄 PDF出力</button>
+    
+    <script>
+        window.addEventListener('beforeprint', function() {
+            console.log('PDF出力を開始します');
+        });
+    </script>
 </body>
 </html>
