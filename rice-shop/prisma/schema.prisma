@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Order {
+  id                   String      @id @default(cuid())
+  orderNumber          String      @unique
+  status               String      @default("pending") // pending | awaiting_payment | paid | shipped | canceled | failed
+  paymentProvider      String // stripe | paidy | np_atobarai
+  paymentMethod        String? // card, konbini, customer_balance, paypay, paidy, np_atobarai ...
+  paymentReference     String? // PaymentIntent ID / Paidy payment ID / NP 取引ID
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  subtotal             Int
+  shippingFee          Int
+  total                Int
+  customerName         String
+  customerKana         String
+  email                String
+  phone                String
+  postalCode           String
+  prefecture           String
+  city                 String
+  address1             String
+  address2             String?
+  deliveryDate         String?
+  deliveryTimeSlot     String?
+  note                 String?
+  items                OrderItem[]
+  createdAt            DateTime    @default(now())
+  updatedAt            DateTime    @updatedAt
+}
+
+model OrderItem {
+  id           String  @id @default(cuid())
+  orderId      String
+  order        Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productSlug  String
+  productName  String
+  weightKg     Int
+  polish       String // white | musenmai | brown | 7bu | 5bu
+  purchaseType String // once | monthly | bimonthly
+  quantity     Int
+  unitPrice    Int
+}
+
+// Webhook の重複処理防止
+model ProcessedEvent {
+  id        String   @id
+  createdAt DateTime @default(now())
+}
